@@ -4,12 +4,11 @@ const chatController = async (req, res) => {
   try {
     const data = await aiOpenRouter(req.body);
 
-    // 🔥 EXTRAER TEXTO DE OPENROUTER
+    // Extraer texto de Open Router
     const message =
       data?.choices?.[0]?.message?.content ||
       "Lo siento, no pude generar una respuesta.";
 
-    // ✅ FORMATO QUE DEEPCHAT ENTIENDE
     return res.status(200).json({
       text: message,
     });
